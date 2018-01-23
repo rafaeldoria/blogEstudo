@@ -18,7 +18,9 @@
             v-bind:titulos="['#','Titulo','Descrição','data']"
             v-bind:itens="{{$listaArtigos}}"
             ordem="asc" ordemcol="1"
-            criar="#criar" detalhe="/blog/public/admin/artigos/" editar="#editar" deletar="#deletar" token="798465132"
+            criar="#criar" detalhe="/blogEstudo/public/admin/artigos/"
+            editar="/blogEstudo/public/admin/artigos/"
+            deletar="#deletar" token=""
             modal="sim"
             >
             </tabela-lista>
@@ -48,14 +50,22 @@
         </span>
     </modal>
     <modal nome="editar" titulo="Editar">
-        <formulario id="formEditar" css="" action="#" method="put" enctype="" token="123456">
+        <formulario id="formEditar" css="" v-bind:action="'/blogEstudo/public/admin/artigos/' + $store.state.item.id" method="put" enctype="" token="{{csrf_token()}}">
             <div class="form-group">
                 <label for="titulo">Título</label>
                 <input type="text" class="form-control" id="titulo" name="titulo" v-model="$store.state.item.titulo" placeholder="Título">
             </div>
             <div class="form-group">
-                <label for="descrição">Descrição</label>
-                <input type="text" class="form-control" id="descrição" name="descrição" v-model="$store.state.item.descricao" placeholder="Descrição">
+                <label for="descricao">Descrição</label>
+                <input type="text" class="form-control" id="descricao" name="descricao" v-model="$store.state.item.descricao" placeholder="Descrição">
+            </div>
+            <div class="form-group">
+                <label for="conteudo">Conteúdo</label>
+                <textarea id="conteudo" name="conteudo" class="form-control" v-model="$store.state.item.conteudo"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="data">Data</label>
+                <input type="datetime-local" class="form-control" id="data" name="data" v-model="$store.state.item.data">
             </div>
         </formulario>
         <span slot="botoes">

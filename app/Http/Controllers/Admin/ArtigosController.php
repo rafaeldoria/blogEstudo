@@ -91,7 +91,20 @@ class ArtigosController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = $request->all();
+        $validation = \Validator::make($data, [
+            "titulo" => "required",
+            "descricao" => "required",
+            "conteudo" => "required",
+            "data" => "required",
+        ]);
+
+        if($validation->fails()){
+            return redirect()->back()->withErrors($validation)->withInput();
+        }
+
+        Artigo::find($id)->update($data);
+        return redirect()->back();
     }
 
     /**
