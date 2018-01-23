@@ -76,7 +76,7 @@
         },
         computed:{
             lista:function(){
-                this.$store.commit('setItens',{texo:"ESTE"});
+                // this.$store.commit('setItens',{texto:"ESTE"});
 
                 let ordem = this.ordemAux;
                 ordem = ordem.toLowerCase();
