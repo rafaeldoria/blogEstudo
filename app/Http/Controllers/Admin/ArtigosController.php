@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
+use Illuminate\Foundation\Validation\ValidatesRequests;
 use App\Http\Controllers\Controller;
 use App\Artigo;
 
@@ -44,6 +45,17 @@ class ArtigosController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
+        $validation = \Validator::make($data, [
+            "titulo" => "required",
+            "descricao" => "required",
+            "conteudo" => "required",
+            "data" => "required",
+        ]);
+
+        if($validation->fails()){
+            return redirect()->back()->withErrors($validation)->withInput();
+        }
+
         Artigo::create($data);
         return redirect()->back();
     }
@@ -56,7 +68,7 @@ class ArtigosController extends Controller
      */
     public function show($id)
     {
-        //
+        return Artigo::find($id);
     }
 
     /**
