@@ -2,6 +2,15 @@
 
 @section('content')
     <pagina tamanho="10">
+
+        @if ($errors->all())
+            <div class="alert alert-danger alert-dissmissible text-center" role="alert">
+                <button type="button" class="close" data-dissmiss="alert" arial-label="Close" name="button"><span aria-hidden></span></button>
+                @foreach ($errors->all() as $key => $value)
+                    <li>{{$value}}</li>
+                @endforeach
+            </div>
+        @endif
         <painel titulo="Lista de Artigos">
             <migalhas v-bind:lista="{{$listaMigalhas}}"></migalhas>
 
@@ -19,19 +28,19 @@
         <formulario id="formAdicionar" css="" action="{{route('artigos.store')}}" method="post" enctype="" token="{{csrf_token()}}">
             <div class="form-group">
                 <label for="titulo">Título</label>
-                <input type="text" class="form-control" id="titulo" name="titulo" v-model="$store.state.item.titulo" placeholder="Título">
+                <input type="text" class="form-control" id="titulo" name="titulo" v-model="$store.state.item.titulo" placeholder="Título" value={{old('titulo')}}>
             </div>
             <div class="form-group">
                 <label for="descricao">Descrição</label>
-                <input type="text" class="form-control" id="descricao" name="descricao" v-model="$store.state.item.descricao" placeholder="Descrição">
+                <input type="text" class="form-control" id="descricao" name="descricao" v-model="$store.state.item.descricao" placeholder="Descrição" value={{old('descricao')}}>
             </div>
             <div class="form-group">
                 <label for="conteudo">Conteúdo</label>
-                <textarea id="conteudo" name="conteudo" class="form-control"></textarea>
+                <textarea id="conteudo" name="conteudo" class="form-control" >{{old('conteudo')}}</textarea>
             </div>
             <div class="form-group">
                 <label for="data">Data</label>
-                <input type="datetime-local" class="form-control" id="data" name="data" >
+                <input type="datetime-local" class="form-control" id="data" name="data" value={{old('data')}}>
             </div>
         </formulario>
         <span slot="botoes">
