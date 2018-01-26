@@ -20,8 +20,6 @@
             ordem="asc" ordemcol="1"
             criar="#criar" detalhe="/blog/public/admin/autores/"
             editar="/blog/public/admin/autores/"
-            deletar="/blog/public/admin/autores/"
-            token="{{csrf_token()}}"
             modal="sim"
             ></tabela-lista>
             <div class="" align="center">
@@ -38,6 +36,13 @@
             <div class="form-group">
                 <label for="email">E-mail</label>
                 <input type="email" class="form-control" id="email" name="email" placeholder="E-mail" value={{old('email')}}>
+            </div>
+            <div class="form-group">
+                <label for="autor">E-mail</label>
+                <select class="form-control" id="autor" name="autor">
+                    <option {{old('autor') && old('autor' == 'N' ? 'selected' : '')}} value="N">Não</option>
+                    <option {{old('autor') && old('autor' == 'S' ? 'selected' : '')}} value="S">Sim</option>
+                </select>
             </div>
             <div class="form-group">
                 <label for="password">Senha</label>
@@ -57,6 +62,13 @@
             <div class="form-group">
                 <label for="email">E-mail</label>
                 <input type="text" class="form-control" id="email" name="email" v-model="$store.state.item.email" placeholder="E-mail">
+            </div>
+            <div class="form-group">
+                <label for="autor">Autor</label>
+                <select class="form-control" id="autor" name="autor" v-model="$store.state.item.autor">
+                    <option value="N">Não</option>
+                    <option value="S">Sim</option>
+                </select>
             </div>
             <div class="form-group">
                 <label for="password">Senha</label>
