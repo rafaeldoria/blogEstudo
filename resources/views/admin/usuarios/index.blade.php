@@ -43,7 +43,7 @@
                 <label for="autor">E-mail</label>
                 <select class="form-control" id="autor" name="autor">
                     <option {{old('autor') && old('autor' == 'N' ? 'selected' : '')}} value="N">Não</option>
-                    <option {{old('autor') && old('autor' == 'S' ? 'selected' : '')}} {{!old('autor') ? 'selected' : '')}} value="S">Sim</option>
+                    <option {{old('autor') && old('autor' == 'S' ? 'selected' : '')}} {{!old('autor') ? 'selected' : ''}} value="S">Sim</option>
                 </select>
             </div>
             <div class="form-group">
@@ -56,7 +56,7 @@
         </span>
     </modal>
     <modal nome="editar" titulo="Editar">
-        <formulario id="formEditar" css="" v-bind:action="'/blogEstudo/public/admin/usuarios/' + $store.state.item.id" method="put" enctype="" token="{{csrf_token()}}">
+        <formulario id="formEditar" css="" v-bind:action="'/blogEstudo/public/admin/autores/' + $store.state.item.id" method="put" enctype="" token="{{csrf_token()}}">
             <div class="form-group">
                 <label for="name">Nome</label>
                 <input type="text" class="form-control" id="name" name="name" v-model="$store.state.item.name" placeholder="Nome">

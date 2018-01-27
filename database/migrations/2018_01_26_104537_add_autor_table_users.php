@@ -14,7 +14,7 @@ class AddAutorTableUsers extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->enum('autor', ['N' , 'S'])->default('N');
+            $table->enum('autor',['N','S'])->default('N');
         });
     }
 

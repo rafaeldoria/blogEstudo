@@ -21,7 +21,7 @@ class AutoresController extends Controller
             ["titulo" => "Lista de Autores","url" => ""]
         ]);
 
-        $listaModelo = User::select('id','name','email')->where('autor','=','S')->paginate(2);
+        $listaModelo = User::select('id','name','email')->where('autor','S')->paginate(2);
 
         return view('admin.autores.index', compact('listaMigalhas', 'listaModelo'));
     }

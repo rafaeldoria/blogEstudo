@@ -18,8 +18,8 @@
             v-bind:titulos="['#','Nome','Email']"
             v-bind:itens="{{json_encode($listaModelo)}}"
             ordem="asc" ordemcol="1"
-            criar="#criar" detalhe="/blog/public/admin/autores/"
-            editar="/blog/public/admin/autores/"
+            criar="#criar" detalhe="/blogEstudo/public/admin/autores/"
+            editar="/blogEstudo/public/admin/autores/"
             modal="sim"
             ></tabela-lista>
             <div class="" align="center">
@@ -41,7 +41,7 @@
                 <label for="autor">E-mail</label>
                 <select class="form-control" id="autor" name="autor">
                     <option {{old('autor') && old('autor' == 'N' ? 'selected' : '')}} value="N">Não</option>
-                    <option {{old('autor') && old('autor' == 'S' ? 'selected' : '')}} value="S">Sim</option>
+                    <option {{old('autor') && old('autor' == 'S' ? 'selected' : '')}} {{!old('autor') ? 'selected' : ''}} value="S">Sim</option>
                 </select>
             </div>
             <div class="form-group">
@@ -54,7 +54,7 @@
         </span>
     </modal>
     <modal nome="editar" titulo="Editar">
-        <formulario id="formEditar" css="" v-bind:action="'/blog/public/admin/autores/' + $store.state.item.id" method="put" enctype="" token="{{csrf_token()}}">
+        <formulario id="formEditar" css="" v-bind:action="'/blogEstudo/public/admin/autores/' + $store.state.item.id" method="put" enctype="" token="{{csrf_token()}}">
             <div class="form-group">
                 <label for="name">Nome</label>
                 <input type="text" class="form-control" id="name" name="name" v-model="$store.state.item.name" placeholder="Nome">
