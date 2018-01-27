@@ -15,7 +15,7 @@
             <migalhas v-bind:lista="{{$listaMigalhas}}"></migalhas>
 
             <tabela-lista
-            v-bind:titulos="['#','Titulo','Descrição','data']"
+            v-bind:titulos="['#','Titulo','Descrição','Autor','data']"
             v-bind:itens="{{json_encode($listaArtigos)}}"
             ordem="asc" ordemcol="1"
             criar="#criar" detalhe="/blogEstudo/public/admin/artigos/"
