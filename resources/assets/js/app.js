@@ -8,7 +8,8 @@
 require('./bootstrap');
 
 window.Vue = require('vue');
-import Vuex from 'vuex'
+import Vuex from 'vuex';
+import ckeditor from 'vue-ckeditor2';
 Vue.use(Vuex);
 
 /**
@@ -45,5 +46,8 @@ const app = new Vue({
     store,
     mounted: function(){
         document.getElementById('app').style.display = "block";
+    },
+    components: {
+      ckeditor,
     }
 });

@@ -18,9 +18,9 @@
             v-bind:titulos="['#','Nome','Email']"
             v-bind:itens="{{json_encode($listaModelo)}}"
             ordem="asc" ordemcol="1"
-            criar="#criar" detalhe="/blogEstudo/public/admin/usuarios/"
-            editar="/blogEstudo/public/admin/usuarios/"
-            deletar="/blogEstudo/public/admin/usuarios/"
+            criar="#criar" detalhe="/blog/public/admin/usuarios/"
+            editar="/blog/public/admin/usuarios/"
+            deletar="/blog/public/admin/usuarios/"
             token="{{csrf_token()}}"
             modal="sim"
             ></tabela-lista>
@@ -56,7 +56,7 @@
         </span>
     </modal>
     <modal nome="editar" titulo="Editar">
-        <formulario id="formEditar" css="" v-bind:action="'/blogEstudo/public/admin/autores/' + $store.state.item.id" method="put" enctype="" token="{{csrf_token()}}">
+        <formulario id="formEditar" css="" v-bind:action="'/blog/public/admin/autores/' + $store.state.item.id" method="put" enctype="" token="{{csrf_token()}}">
             <div class="form-group">
                 <label for="name">Nome</label>
                 <input type="text" class="form-control" id="name" name="name" v-model="$store.state.item.name" placeholder="Nome">

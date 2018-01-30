@@ -17,10 +17,10 @@
             <tabela-lista
             v-bind:titulos="['#','Titulo','Descrição','Autor','data']"
             v-bind:itens="{{json_encode($listaArtigos)}}"
-            ordem="asc" ordemcol="1"
-            criar="#criar" detalhe="/blogEstudo/public/admin/artigos/"
-            editar="/blogEstudo/public/admin/artigos/"
-            deletar="/blogEstudo/public/admin/artigos/"
+            ordem="desc" ordemcol="0"
+            criar="#criar" detalhe="/blog/public/admin/artigos/"
+            editar="/blog/public/admin/artigos/"
+            deletar="/blog/public/admin/artigos/"
             token="{{csrf_token()}}"
             modal="sim"
             ></tabela-lista>
@@ -40,8 +40,20 @@
                 <input type="text" class="form-control" id="descricao" name="descricao" v-model="$store.state.item.descricao" placeholder="Descrição" value={{old('descricao')}}>
             </div>
             <div class="form-group">
-                <label for="conteudo">Conteúdo</label>
-                <textarea id="conteudo" name="conteudo" class="form-control" >{{old('conteudo')}}</textarea>
+                <label for="addConteudo">Conteúdo</label>
+
+                <ckeditor
+                    id="addConteudo"
+                    name="conteudo"
+                    value="{{old('conteudo')}}"
+                    v-bind:config="{
+                        toolbar: [
+                        [ 'Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript' ]
+                        ],
+                        height: 200
+                    }" >
+                </ckeditor>
+
             </div>
             <div class="form-group">
                 <label for="data">Data</label>
@@ -53,7 +65,7 @@
         </span>
     </modal>
     <modal nome="editar" titulo="Editar">
-        <formulario id="formEditar" css="" v-bind:action="'/blogEstudo/public/admin/artigos/' + $store.state.item.id" method="put" enctype="" token="{{csrf_token()}}">
+        <formulario id="formEditar" css="" v-bind:action="'/blog/public/admin/artigos/' + $store.state.item.id" method="put" enctype="" token="{{csrf_token()}}">
             <div class="form-group">
                 <label for="titulo">Título</label>
                 <input type="text" class="form-control" id="titulo" name="titulo" v-model="$store.state.item.titulo" placeholder="Título">
@@ -63,8 +75,19 @@
                 <input type="text" class="form-control" id="descricao" name="descricao" v-model="$store.state.item.descricao" placeholder="Descrição">
             </div>
             <div class="form-group">
-                <label for="conteudo">Conteúdo</label>
-                <textarea id="conteudo" name="conteudo" class="form-control" v-model="$store.state.item.conteudo"></textarea>
+                <label for="editConteudo">Conteúdo</label>
+                <textarea id="" name="editConteudo" class="form-control" v-model="$store.state.item.conteudo"></textarea>
+                <ckeditor
+                    id="editConteudo"
+                    name="conteudo"
+                    v-model="$store.state.item.conteudo"
+                    v-bind:config="{
+                        toolbar: [
+                          [ 'Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript' ]
+                        ],
+                        height: 200
+                    }">
+                </ckeditor>
             </div>
             <div class="form-group">
                 <label for="data">Data</label>
