@@ -28,4 +28,15 @@ class Artigo extends Model
                 ->paginate($pag);
         return $listaArtigos;
     }
+    public static function listaArtigosSite($pag)
+    {
+        $listaArtigos = DB::table('artigos')
+                ->join('users','users.id','artigos.user_id')
+                ->select('artigos.id','artigos.titulo','artigos.descricao','users.name as autor','artigos.data')
+                ->whereDate('data','<=',date('Y-m-d'))
+                ->whereNull('deleted_at')
+                ->orderBy('date','DESC')
+                ->paginate($pag);
+        return $listaArtigos;
+    }
 }

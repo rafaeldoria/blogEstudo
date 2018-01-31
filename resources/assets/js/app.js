@@ -40,6 +40,7 @@ Vue.component('migalhas', require('./components/Migalhas.vue'));
 Vue.component('modal', require('./components/modal/Modal.vue'));
 Vue.component('modal-link', require('./components/modal/ModalLink.vue'));
 Vue.component('formulario', require('./components/Formulario.vue'));
+Vue.component('artigo-card', require('./components/ArtigoCard.vue'));
 
 const app = new Vue({
     el: '#app',
@@ -48,6 +49,6 @@ const app = new Vue({
         document.getElementById('app').style.display = "block";
     },
     components: {
-      ckeditor,
+        ckeditor,
     }
 });
